@@ -1,30 +1,29 @@
 import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  useToast,
-  VStack,
-  useColorModeValue,
-  ButtonGroup,
-  IconButton,
-  Tooltip,
-  Card,
-  CardBody,
-  Badge,
-  HStack,
-} from "@chakra-ui/react";
-import {
+  ArrowRightIcon,
   CopyIcon,
   DownloadIcon,
   RepeatIcon,
-  ArrowRightIcon,
 } from "@chakra-ui/icons";
+import {
+  Badge,
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  Flex,
+  HStack,
+  Icon,
+  IconButton,
+  Text,
+  Tooltip,
+  useColorModeValue,
+  useToast,
+  VStack,
+} from "@chakra-ui/react";
 import Editor from "@monaco-editor/react";
 import { useState } from "react";
-import ResizableEditor from "./ResizableEditor";
 import { BsGripHorizontal } from "react-icons/bs";
-import { Icon } from "@chakra-ui/react";
 
 const JsonComparator = () => {
   const [leftJson, setLeftJson] = useState("");
@@ -370,7 +369,9 @@ const JsonComparator = () => {
 
       <Flex gap={4} justify="center" flexWrap="wrap">
         <Button
-          colorScheme="blue"
+          bg="#004aad"
+          color="white"
+          _hover={{ bg: "#003c8a" }}
           size={{ base: "md", lg: "lg" }}
           onClick={compareJson}
           leftIcon={<ArrowRightIcon />}

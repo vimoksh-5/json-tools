@@ -1,16 +1,18 @@
 import {
+  Box,
   ChakraProvider,
   Container,
+  Flex,
   Heading,
+  Image,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
   Text,
-  Box,
-  Flex,
 } from "@chakra-ui/react";
+import jsonToolsIcon from "./assets/json_tools.png";
 import JsonComparator from "./components/JsonComparator";
 import JsonFormatter from "./components/JsonFormatter";
 import JsonValidator from "./components/JsonValidator";
@@ -29,19 +31,26 @@ function App() {
             direction={{ base: "column", sm: "row" }}
             gap={4}
           >
-            <Box textAlign={{ base: "center", sm: "left" }}>
-              <Heading
-                as="h1"
-                size={{ base: "md", sm: "lg" }}
-                bgGradient="linear(to-r, blue.400, teal.400)"
-                bgClip="text"
-              >
-                JSON Tools
-              </Heading>
-              <Text mt={1} color="gray.500" fontSize="sm">
-                Compare, Format, and Validate JSON with ease
-              </Text>
-            </Box>
+            <Flex
+              textAlign={{ base: "center", sm: "left" }}
+              align="center"
+              gap={3}
+            >
+              <Image src={jsonToolsIcon} alt="JSON Tools Logo" boxSize="60px" />
+              <Box>
+                <Heading
+                  as="h1"
+                  size={{ base: "md", sm: "lg" }}
+                  bgGradient={`linear(to-r, #004aad, #004aad)`}
+                  bgClip="text"
+                >
+                  JSON Tools
+                </Heading>
+                <Text mt={1} color="gray.500" fontSize="sm">
+                  Format, Validate, and View JSON with ease
+                </Text>
+              </Box>
+            </Flex>
           </Flex>
         </Box>
 
@@ -78,27 +87,7 @@ function App() {
                 whiteSpace="nowrap"
                 minW={{ base: "auto", md: "120px" }}
                 _selected={{
-                  color: "blue.600",
-                  bg: "blue.50",
-                  fontWeight: "semibold",
-                }}
-                _hover={{
-                  bg: "gray.50",
-                }}
-              >
-                Compare JSON
-              </Tab>
-              <Tab
-                py={2}
-                px={4}
-                borderRadius="lg"
-                fontWeight="medium"
-                color="gray.600"
-                transition="all 0.2s"
-                whiteSpace="nowrap"
-                minW={{ base: "auto", md: "120px" }}
-                _selected={{
-                  color: "blue.600",
+                  color: "#004aad",
                   bg: "blue.50",
                   fontWeight: "semibold",
                 }}
@@ -118,7 +107,7 @@ function App() {
                 whiteSpace="nowrap"
                 minW={{ base: "auto", md: "120px" }}
                 _selected={{
-                  color: "blue.600",
+                  color: "#004aad",
                   bg: "blue.50",
                   fontWeight: "semibold",
                 }}
@@ -128,16 +117,36 @@ function App() {
               >
                 Validate JSON
               </Tab>
+              <Tab
+                py={2}
+                px={4}
+                borderRadius="lg"
+                fontWeight="medium"
+                color="gray.600"
+                transition="all 0.2s"
+                whiteSpace="nowrap"
+                minW={{ base: "auto", md: "120px" }}
+                _selected={{
+                  color: "#004aad",
+                  bg: "blue.50",
+                  fontWeight: "semibold",
+                }}
+                _hover={{
+                  bg: "gray.50",
+                }}
+              >
+                Compare JSON
+              </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel px={0}>
-                <JsonComparator />
-              </TabPanel>
               <TabPanel px={0}>
                 <JsonFormatter />
               </TabPanel>
               <TabPanel px={0}>
                 <JsonValidator />
+              </TabPanel>
+              <TabPanel px={0}>
+                <JsonComparator />
               </TabPanel>
             </TabPanels>
           </Tabs>

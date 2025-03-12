@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://jsontools.org/sitemap.xml
+
+# Allow all bots to access the site
+# Encourage indexing of all pages 

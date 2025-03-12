@@ -1,21 +1,19 @@
+import { CopyIcon, DownloadIcon, RepeatIcon } from "@chakra-ui/icons";
 import {
-  Box,
+  Badge,
   Button,
-  HStack,
-  Select,
-  Text,
-  useToast,
-  VStack,
-  useColorModeValue,
   ButtonGroup,
-  IconButton,
-  Tooltip,
   Card,
   CardBody,
-  Badge,
+  HStack,
+  IconButton,
+  Select,
+  Text,
+  Tooltip,
+  useColorModeValue,
+  useToast,
+  VStack,
 } from "@chakra-ui/react";
-import { CopyIcon, DownloadIcon, RepeatIcon } from "@chakra-ui/icons";
-import Editor from "@monaco-editor/react";
 import { useState } from "react";
 import ResizableEditor from "./ResizableEditor";
 
@@ -159,7 +157,9 @@ const JsonFormatter = () => {
           <option value="8">8 spaces</option>
         </Select>
         <Button
-          colorScheme="blue"
+          bg="#004aad"
+          color="white"
+          _hover={{ bg: "#003c8a" }}
           size={{ base: "md", lg: "lg" }}
           onClick={formatJson}
           flexGrow={1}

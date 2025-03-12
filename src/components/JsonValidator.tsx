@@ -1,20 +1,18 @@
+import { CopyIcon, DownloadIcon, RepeatIcon } from "@chakra-ui/icons";
 import {
-  Box,
-  Text,
-  VStack,
-  useColorModeValue,
-  Card,
-  CardBody,
   Badge,
   ButtonGroup,
-  IconButton,
-  Tooltip,
+  Card,
+  CardBody,
   HStack,
+  IconButton,
+  Text,
+  Tooltip,
+  VStack,
+  useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
-import { CopyIcon, DownloadIcon, RepeatIcon } from "@chakra-ui/icons";
-import Editor from "@monaco-editor/react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import ResizableEditor from "./ResizableEditor";
 
 const JsonValidator = () => {
