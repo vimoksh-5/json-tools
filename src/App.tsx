@@ -17,8 +17,34 @@ import JsonComparator from "./components/JsonComparator";
 import JsonFormatter from "./components/JsonFormatter";
 import JsonValidator from "./components/JsonValidator";
 import theme from "./theme";
+import { useEffect, useState } from "react";
+import { track } from "@vercel/analytics";
 
 function App() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    // Log when the app initializes
+    console.log("App initialized");
+    track("app_initialized", {
+      timestamp: new Date().toISOString(),
+      userAgent: navigator.userAgent,
+      referrer: document.referrer,
+      screenSize: `${window.innerWidth}x${window.innerHeight}`,
+      language: navigator.language,
+    });
+  }, []);
+
+  const handleTabChange = (index: number) => {
+    const tabNames = ["Format JSON", "Validate JSON", "Compare JSON"];
+    setActiveTab(index);
+    track("tab_changed", {
+      from: tabNames[activeTab],
+      to: tabNames[index],
+      timestamp: new Date().toISOString(),
+    });
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <Box minH="100vh" bg="gray.50">
@@ -60,6 +86,7 @@ function App() {
             colorScheme="blue"
             size={{ base: "md", lg: "lg" }}
             isLazy
+            onChange={handleTabChange}
           >
             <TabList
               mb={6}
