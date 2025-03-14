@@ -8,6 +8,8 @@ interface ResizableEditorProps {
   onChange: (value: string | undefined) => void;
   minHeight?: number;
   maxHeight?: number;
+  language?: string;
+  readOnly?: boolean;
 }
 
 const ResizableEditor = ({
@@ -15,6 +17,8 @@ const ResizableEditor = ({
   onChange,
   minHeight = 200,
   maxHeight = 800,
+  language = "json",
+  readOnly = false,
 }: ResizableEditorProps) => {
   const [height, setHeight] = useState(350);
 
@@ -44,7 +48,7 @@ const ResizableEditor = ({
     <Box position="relative" borderRadius="md" overflow="hidden">
       <Editor
         height={`${height}px`}
-        defaultLanguage="json"
+        defaultLanguage={language}
         value={value}
         onChange={onChange}
         options={{
@@ -57,6 +61,7 @@ const ResizableEditor = ({
           cursorBlinking: "smooth",
           cursorSmoothCaretAnimation: "on",
           wordWrap: "on",
+          readOnly,
         }}
         theme={useColorModeValue("light", "vs-dark")}
       />

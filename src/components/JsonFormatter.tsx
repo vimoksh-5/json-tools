@@ -1,4 +1,8 @@
-import { CopyIcon, DownloadIcon, RepeatIcon } from "@chakra-ui/icons";
+import {
+  CopyIcon,
+  DownloadIcon,
+  RepeatIcon
+} from "@chakra-ui/icons";
 import {
   Badge,
   Button,
@@ -12,9 +16,10 @@ import {
   Tooltip,
   useColorModeValue,
   useToast,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { downloadFile } from "../utils/download";
 import ResizableEditor from "./ResizableEditor";
 
 const JsonFormatter = () => {
@@ -25,20 +30,18 @@ const JsonFormatter = () => {
 
   const formatJson = () => {
     try {
-      const parsed = JSON.parse(input);
-      const formatted = JSON.stringify(parsed, null, parseInt(indentSize));
-      setInput(formatted);
+      const jsonData = JSON.parse(input);
+      setInput(JSON.stringify(jsonData, null, parseInt(indentSize)));
       toast({
-        title: "JSON Formatted",
+        title: "JSON formatted successfully",
         status: "success",
         duration: 2000,
         isClosable: true,
       });
     } catch (error) {
       toast({
-        title: "Invalid JSON",
-        description:
-          error instanceof Error ? error.message : "Please enter valid JSON",
+        title: "Error",
+        description: error instanceof Error ? error.message : "Invalid JSON",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -66,24 +69,7 @@ const JsonFormatter = () => {
   };
 
   const downloadJson = () => {
-    try {
-      const blob = new Blob([input], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "formatted.json";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      toast({
-        title: "Failed to download",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-      });
-    }
+    downloadFile(input, "formatted.json", "application/json", toast);
   };
 
   const clearEditor = () => {
