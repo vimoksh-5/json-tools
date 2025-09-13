@@ -1,4 +1,4 @@
-# Free online JSON formatter, validator , comparator and viewer. Instantly format, beautify and validate JSON. Easy-to-use JSON formatter with syntax highlighting, custom indentation, and JSON validation. Also includes JSON comparison tools.
+Free online JSON formatter, validator , comparator and viewer. Instantly format, beautify and validate JSON. Easy-to-use JSON formatter with syntax highlighting, custom indentation, and JSON validation. Also includes JSON comparison tools.
 
 ## Getting Started
 
